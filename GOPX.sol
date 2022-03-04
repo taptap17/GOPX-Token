@@ -1,10 +1,8 @@
 /**
- *Submitted for verification at Etherscan.io on 2021-12-26
+ *Submitted for verification at Etherscan.io on 2022-02-23
 */
 
-// File: contracts/gop.sol
-
-
+// SPDX-License-Identifier: MIT
 pragma solidity 0.8.10;
 
 /**
@@ -466,7 +464,7 @@ interface IUniswap {
 contract GameOnPlayers is ERC20, Ownable {
     IUniswap public router = IUniswap(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
     address public fundReceiver; // Fund Receiver address is that address where token purchased funds will go and it will send the tokens.
-    uint256 public runningPhase = 1; // This is the current running phase No. of token price.
+    uint256 public runningPhase = 2; // This is the current running phase No. of token price.
     uint256 public lockedTimeInterval = 90*(24*60*60);
 
     struct PhasesStructure {
@@ -477,7 +475,7 @@ contract GameOnPlayers is ERC20, Ownable {
     mapping(address => uint256) public lockedTimestamp; // This is the locked timestamp (90 days after purchase). After this timestamp the tokens will unlocked.
     mapping(uint256 => PhasesStructure) public phases;  // This mapping contains phases information (Price, endingTimestamp). 
 
-    constructor(address owner_, address _fundReceiver) ERC20("Game On Players", "GOPXX") Ownable(owner_) {
+    constructor(address owner_, address _fundReceiver) ERC20("Game On Players", "GOPX2") Ownable(owner_) {
         fundReceiver = _fundReceiver;
         _mint(owner_, 10000000000*(10**18));
         phases[1] = PhasesStructure(1*(10**6), 1638234000); // Timestamp for Tuesday, November 30, 2021 1:00:00 AM.
